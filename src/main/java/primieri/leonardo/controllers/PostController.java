@@ -45,8 +45,38 @@ public class PostController {
 	
 	}
 	
+	public static void deletePost(Integer id) {
+		
+		EntityManager em  = ENTITY_MANAGER_FACTORY.createEntityManager();
+		EntityTransaction transaction = null;
+		
+		Post p = null;
+
+		try {
+			transaction = em.getTransaction();
+			transaction.begin();
+			
+			p = em.createQuery("SELECT p FROM posts p WHERE p.id = :id" , Post.class).setParameter("id", id).getSingleResult();
+			em.remove(p);
+			
+			transaction.commit();
+			
+		} catch (Exception e) {
+			
+			if(transaction != null) {
+				transaction.rollback();
+			}
+			
+			e.printStackTrace();
+			
+		} finally {
+			em.close();
+		}
+		
+	}
 	
-	public static void createPost(String title, String description, String imageURL) {
+	
+	public static void createPost(String title, String description, String imageURL, String cat) {
 		EntityManager em  = ENTITY_MANAGER_FACTORY.createEntityManager();
 		EntityTransaction transaction = null;
 		
@@ -68,6 +98,7 @@ public class PostController {
 			post.setDescription(description);
 			post.setDate(dtf.format(now));
 			post.setImageURL(imageURL);
+			post.setCat(cat);
 			
 			em.persist(post);
 			

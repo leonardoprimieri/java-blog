@@ -26,17 +26,22 @@
 			
 			%> 
 			<section class="blog-post">
-			<a href=""> <img src="<% out.append(p.getImageURL()); %>"
+			 <img src="<% out.append(p.getImageURL()); %>"
 				alt="any picture..." />
 				<div class="blog-post__info">
 					<span>  <strong>Postado em: </strong> <% out.append(p.getDate()); %> </span>
+					<span class="spanCat <%out.append(p.getCat());%>"><% out.append(p.getCat()); %></span>
 					<h1><% out.append(p.getTitle()); %></h1>
 					<p><% out.append(p.getDescription()); %></p>
+					<a class="deleteButton" href="DeletePost?id=<%= p.getId()%>">Excluir Post</a>
 					
 				</div>
-			</a>
+			
 			</section>
-			<% } %>
+			<% 
+						} 
+			
+			%>
 		 
 
 	</div>

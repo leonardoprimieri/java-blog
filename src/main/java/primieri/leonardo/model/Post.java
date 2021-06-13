@@ -31,7 +31,18 @@ public class Post implements Serializable {
 	@Column(name="date")
 	private String date;
 	
+	@Column(name="cat")
+	private String cat;
 	
+	
+
+	public String getCat() {
+		return cat;
+	}
+
+	public void setCat(String cat) {
+		this.cat = cat;
+	}
 
 	public String getTitle() {
 		return title;
@@ -59,6 +70,14 @@ public class Post implements Serializable {
 
 	public String getImageURL() {
 		return imageURL;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public void setImageURL(String imageURL) {

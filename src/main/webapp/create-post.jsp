@@ -1,3 +1,6 @@
+<%@page import="primieri.leonardo.model.Category"%>
+<%@page import="java.util.List"%>
+<%@page import="primieri.leonardo.controllers.CategoryController"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -23,7 +26,7 @@
 			<form action="CreatePostServlet" method="post">
 				<h1>O que voce quer falar?</h1>
 				<div class="input-group">
-					<label for="title">T�tulo: </label> 
+					<label for="title">Titulo: </label> 
 					<input required type="text" id="title"name="title" />
 				</div> 
 				<div class="input-group">
@@ -33,6 +36,24 @@
 				
 				<div class="input-group">
 					<label for="imageURL">URL da imagem: </label> <input required id="imageURL" name="imageURL" type="url" />
+				</div>
+				
+				 
+				
+				<div class="input-group" style="margin-top: 2rem;">
+					<select style="padding: 1rem; border-radius:5px;"  name="cat" id="cat">
+					<option>Selecione uma categoria</option>
+					<%
+						List<Category> cats = CategoryController.getCategories() ;
+		
+						for(Category cat : cats) {
+		
+					%>
+						
+						<option value="<% out.append(cat.getName()); %>"><% out.append(cat.getName()); %></option>
+						
+						<% } %>
+					</select>
 				</div>
 
 				<button type="submit">Publicar!</button>

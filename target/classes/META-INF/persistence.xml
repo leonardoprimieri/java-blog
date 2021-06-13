@@ -6,6 +6,7 @@
 		
 		<class>primieri.leonardo.model.Post</class>
 		<class>primieri.leonardo.model.User</class>
+		<class>primieri.leonardo.model.Category</class>
 		
 		
 		<properties>

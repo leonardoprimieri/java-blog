@@ -31,11 +31,11 @@ public class CreatePostServlet extends HttpServlet {
 
 		String title = request.getParameter("title");
 		String description = request.getParameter("description");
-		
 		String imageURL = request.getParameter("imageURL");
-
+		String cat = request.getParameter("cat");
 		
-		PostController.createPost(title, description, imageURL);
+	
+		PostController.createPost(title, description, imageURL, cat);
 		
 
 		response.sendRedirect("posts.jsp");

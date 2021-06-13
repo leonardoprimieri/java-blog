@@ -6,7 +6,7 @@
 
 	<section class="header-content">
 		<div class="header-welcome">
-			<img src="https://i.pravatar.cc/300" alt="Leonardo Merlo Primieri"/>
+			<img src="https://picsum.photos/200/300" alt="Leonardo Merlo Primieri"/>
 			<p>Bem vindo!</p>
 		</div>
 		

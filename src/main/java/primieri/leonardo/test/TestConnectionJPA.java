@@ -14,6 +14,8 @@ import primieri.leonardo.model.Post;
 import primieri.leonardo.model.User;
 
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import javax.management.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -81,7 +83,42 @@ public class TestConnectionJPA {
 		
 	}
 	
-	@Test
+	
+	//@Test
+	public void deletePost() {
+			
+			EntityManager em  = ENTITY_MANAGER_FACTORY.createEntityManager();
+			EntityTransaction transaction = null;
+			
+			Post p = null;
+			
+			
+			
+			String title = "Upload de imagens no Front End com ReactJS e Context API";
+			try {
+				transaction = em.getTransaction();
+				transaction.begin();
+				
+				p = em.createQuery("SELECT p FROM posts p WHERE p.title = :title" , Post.class).setParameter("title", title).getSingleResult();
+				em.remove(p);
+				
+				transaction.commit();
+				
+			} catch (Exception e) {
+				
+				if(transaction != null) {
+					transaction.rollback();
+				}
+				
+				e.printStackTrace();
+				
+			} finally {
+				em.close();
+			}
+			
+		}
+	
+	//@Test
 	public void createUser() {
 		EntityManager em  = ENTITY_MANAGER_FACTORY.createEntityManager();
 		EntityTransaction transaction = null;
