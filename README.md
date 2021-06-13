@@ -1,5 +1,5 @@
 # java-blog
-Esse proejto foi feito durante a disciplina de Programação Orientada à Objetos Avançada.
+Esse proejto foi feito durante a disciplina de POO Avançada.
 
 Tecnologias:
 
